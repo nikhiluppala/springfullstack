@@ -49,6 +49,14 @@ public class CompanyController {
 		if(deleted) return new ResponseEntity<>("Company deleted successfully",HttpStatus.OK);
 		
 		return new ResponseEntity<>("User not found",HttpStatus.NOT_FOUND);
-	}
+	} 
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Company> getCompanyById(@PathVariable("id") Long id){
+		Company company = companySerive.getCompanyById(id);
+		if(company != null) return new ResponseEntity<>(company ,HttpStatus.OK);
+		
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	} 
 	
 }

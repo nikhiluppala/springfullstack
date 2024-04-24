@@ -44,12 +44,21 @@ public class CompanyServiceImpl implements CompanyService{
 
 	@Override
 	public boolean deleteCompany(Long id) {
-		Optional<Company> company = companyRepo.findById(id);
-		if(company.isPresent()) {
+		if(companyRepo.existsById(id)) {
 			companyRepo.deleteById(id);
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Company getCompanyById(Long id) {
+		
+		if(companyRepo.existsById(id)) {
+			return companyRepo.findById(id).get();
+			
+		}
+		return null;
 	}
 
 }
