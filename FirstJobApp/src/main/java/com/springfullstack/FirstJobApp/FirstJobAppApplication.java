@@ -8,6 +8,7 @@ public class FirstJobAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FirstJobAppApplication.class, args);
+
 	}
 
 }
